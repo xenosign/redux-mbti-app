@@ -34,22 +34,6 @@ export default function Show() {
 
   const dispatch = useDispatch();
 
-  async function incCount() {
-    const resInc = await fetch('http://localhost:4000/mongo/inccount', {
-      method: 'POST',
-    });
-    if (resInc.status === 200) {
-      const msg = await resInc.json();
-      console.log(msg);
-    } else {
-      throw new Error('통신 이상');
-    }
-  }
-
-  useEffect(() => {
-    incCount();
-  }, []);
-
   return (
     <>
       <Header>당신의 개발자 MBTI 결과는?</Header>

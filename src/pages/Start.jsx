@@ -21,28 +21,6 @@ export default function Start() {
   const [counts, setCounts] = useState(0);
   const dispatch = useDispatch();
 
-  async function mongoFetchData() {
-    const resMongoCount = await fetch('http://localhost:4000/mongo/count');
-    if (resMongoCount.status === 200) {
-      const numOfCounts = await resMongoCount.json();
-      if (numOfCounts.length !== 0) setCounts(numOfCounts[0].counts);
-    } else {
-      throw new Error('방문자 수 통신 이상');
-    }
-
-    const resMongoData = await fetch('http://localhost:4000/mongo/getdata');
-    if (resMongoData.status === 200) {
-      const data = await resMongoData.json();
-      if (data.length !== 0) dispatch(init(data[0]));
-    } else {
-      throw new Error('데이터 통신 이상');
-    }
-  }
-
-  useEffect(() => {
-    mongoFetchData();
-  }, []);
-
   return (
     <>
       <Header>개발자 MBTI 조사</Header>

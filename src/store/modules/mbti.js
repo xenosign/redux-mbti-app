@@ -128,13 +128,6 @@ const initState = {
   },
 };
 
-const initStateEmpty = {
-  mbtiResult: '',
-  page: 0,
-  survey: [],
-  explaination: {},
-};
-
 // 액션 타입 설정
 const INIT = 'mbti/INIT';
 const CHECK = 'mbti/CHECK';
@@ -169,7 +162,7 @@ export function reset() {
 }
 
 // 리듀서 설정
-export default function mbti(state = initStateEmpty, action) {
+export default function mbti(state = initState, action) {
   switch (action.type) {
     case INIT:
       return {
